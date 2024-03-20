@@ -1,3 +1,4 @@
+```python
 import numpy as np
 import math
 class Point:
@@ -153,7 +154,7 @@ class Square(Rectangle): # we use the inheritance to bring the methods and attri
     
     def Compute_Interfencfe_point(self, point: Point) -> bool:
         return super().Compute_Interfencfe_point(point)
-
+```
    
 
 
