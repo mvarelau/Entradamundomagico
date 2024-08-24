@@ -154,7 +154,139 @@ class Square(Rectangle): # we use the inheritance to bring the methods and attri
     
     def Compute_Interfencfe_point(self, point: Point) -> bool:
         return super().Compute_Interfencfe_point(point)
+class MenuItem:
+    def __init__(self, name: str, price: float, description: str):
+        self.name = name
+        self.price = price
+        self.description = description
+
+class Beverage(MenuItem):
+    def __init__(self, name: str, price: float, description: str, kind: str):
+        super().__init__(name, price, description)
+        self.kind = kind
+
+class BreakFast(MenuItem):
+    def __init__(self, name: str, price: float, description: str, flavor: str):
+        super().__init__(name, price, description)
+        self.flavor = flavor
+
+class Lunch(MenuItem):
+    def __init__(self, name: str, price: float, description: str, protein: str):
+        super().__init__(name, price, description)
+        self.protein = protein
+
+class Order:
+    def __init__(self):
+        self.order_list = []
+
+    def add_item(self, item: MenuItem):
+        self.order_list.append(item)
+
+    def total_amount(self):
+        total = sum(item.price for item in self.order_list)
+        return total
+
+    def apply_discounts(self):
+        total_amount = self.total_amount()
+        if len(self.order_list) >= 4:
+            total_amount -= total_amount * 0.10  # 10% de descuento si hay 4 o más ítems
+        return total_amount
+
+    def print_receipt(self):
+        print("Receipt:")
+        for item in self.order_list:
+            print(f"{item.name}: ${item.price:.2f} - {item.description}")
+        print(f"Total Amount: ${self.total_amount():.2f}")
+        print(f"Total after discounts: ${self.apply_discounts():.2f}")
+
+if __name__ == "__main__":
+    # Creando ítems de ejemplo
+    strawberry = Beverage(name="Strawberry Juice", price=5, description="Fresh strawberry juice", kind="Cold")
+    coffee = Beverage(name="Coffee", price=4, description="Hot brewed coffee", kind="Hot")
+    pancakes = BreakFast(name="Nutella Pancakes", price=15, description="Pancakes with Nutella", flavor="Sweet")
+    eggs = BreakFast(name="Eggs", price=13, description="Scrambled eggs", flavor="Salty")
+    ham_creps = Lunch(name="Ham Creps", price=13, description="Ham crepes with cheese", protein="Ham")
+
+    # Creando una orden
+    order = Order()
+    order.add_item(strawberry)
+    order.add_item(coffee)
+    order.add_item(pancakes)
+    order.add_item(eggs)
+    order.add_item(ham_creps)
+
+    # Imprimiendo el recibo
+    order.print_receipt()
+
 ```
+# Developed restaurant
+```python
+class MenuItem:
+    def __init__(self, name: str, price: float, description: str):
+        self.name = name
+        self.price = price
+        self.description = description
+
+class Beverage(MenuItem):
+    def __init__(self, name: str, price: float, description: str, kind: str):
+        super().__init__(name, price, description)
+        self.kind = kind
+
+class BreakFast(MenuItem):
+    def __init__(self, name: str, price: float, description: str, flavor: str):
+        super().__init__(name, price, description)
+        self.flavor = flavor
+
+class Lunch(MenuItem):
+    def __init__(self, name: str, price: float, description: str, protein: str):
+        super().__init__(name, price, description)
+        self.protein = protein
+
+class Order:
+    def __init__(self):
+        self.order_list = []
+
+    def add_item(self, item: MenuItem):
+        self.order_list.append(item)
+
+    def total_amount(self):
+        total = sum(item.price for item in self.order_list)
+        return total
+
+    def apply_discounts(self):
+        total_amount = self.total_amount()
+        if len(self.order_list) >= 4:
+            total_amount -= total_amount * 0.10  # 10% de descuento si hay 4 o más ítems
+        return total_amount
+
+    def print_receipt(self):
+        print("Receipt:")
+        for item in self.order_list:
+            print(f"{item.name}: ${item.price:.2f} - {item.description}")
+        print(f"Total Amount: ${self.total_amount():.2f}")
+        print(f"Total after discounts: ${self.apply_discounts():.2f}")
+
+if __name__ == "__main__":
+    # Creando ítems de ejemplo
+    strawberry = Beverage(name="Strawberry Juice", price=5, description="Fresh strawberry juice", kind="Cold")
+    coffee = Beverage(name="Coffee", price=4, description="Hot brewed coffee", kind="Hot")
+    pancakes = BreakFast(name="Nutella Pancakes", price=15, description="Pancakes with Nutella", flavor="Sweet")
+    eggs = BreakFast(name="Eggs", price=13, description="Scrambled eggs", flavor="Salty")
+    ham_creps = Lunch(name="Ham Creps", price=13, description="Ham crepes with cheese", protein="Ham")
+
+    # Creando una orden
+    order = Order()
+    order.add_item(strawberry)
+    order.add_item(coffee)
+    order.add_item(pancakes)
+    order.add_item(eggs)
+    order.add_item(ham_creps)
+
+    # Imprimiendo el recibo
+    order.print_receipt()
+```
+
+
    
 
 
